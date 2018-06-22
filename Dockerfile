@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.1-runtime-deps-alpine3.7
+FROM microsoft/dotnet:2.1.1-runtime-alpine3.7
 MAINTAINER awyme qinmenghua@mail.com
 
 RUN apk --no-cache add curl jq bash tree tzdata p7zip icu-libs && \
