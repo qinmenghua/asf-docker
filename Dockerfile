@@ -7,10 +7,10 @@ RUN apk --no-cache add curl jq bash tree tzdata icu-libs && \
     ASF_TARBALL_FILE=$(echo $ASF_RELEASE_DATA | jq -r '.name') && \
     echo $ASF_RELEASE_DATA | jq -r '.browser_download_url' | xargs curl -LO && \
     apk --no-cache del curl jq tzdata && \
-	mkdir /usr/local/asf/ && \
-	chmod +x /usr/local/asf/ && \
+    mkdir /usr/local/asf/ && \
+    chmod +x /usr/local/asf/ && \
     unzip -o $ASF_TARBALL_FILE -d /usr/local/asf/ && \
-	chmod +x /usr/local/asf/ArchiSteamFarm.sh && \
+    chmod +x /usr/local/asf/ArchiSteamFarm.sh && \
     rm -f $ASF_TARBALL_FILE && \
     mv $(basename $ASF_TARBALL_FILE.zip) /usr/local/asf
 
