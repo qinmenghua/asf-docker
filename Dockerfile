@@ -6,10 +6,11 @@ RUN apk --no-cache add curl jq bash tree tzdata icu-libs && \
     ASF_RELEASE_DATA=$(curl https://api.github.com/repos/JustArchi/ArchiSteamFarm/releases/latest | jq -r '.assets[] | select(.name | contains("ASF-generic.zip"))') && \
     ASF_TARBALL_FILE=$(echo $ASF_RELEASE_DATA | jq -r '.name') && \
     echo $ASF_RELEASE_DATA | jq -r '.browser_download_url' | xargs curl -LO && \
-    apk --no-cache del curl jq bash tree tzdata && \
+    apk --no-cache del curl jq tzdata && \
 	mkdir /usr/local/asf/ && \
 	chmod +x /usr/local/asf/ && \
     unzip -o $ASF_TARBALL_FILE -d /usr/local/asf/ && \
+	chmod +x /usr/local/asf/ArchiSteamFarm.sh && \
     rm -f $ASF_TARBALL_FILE && \
     mv $(basename $ASF_TARBALL_FILE.zip) /usr/local/asf
 
