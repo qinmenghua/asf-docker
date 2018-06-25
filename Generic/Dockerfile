@@ -12,7 +12,7 @@ RUN apk --no-cache add curl jq bash tree tzdata p7zip icu-libs && \
 	cd /usr/local/asf/ && \
 	7z x $ASF_TARBALL_FILE && \
 	chmod -R +x /usr/local/asf/ && \
-    	echo '184.29.59.103 steamcommunity.com'>>/etc/hosts
+    	echo '184.29.59.103 steamcommunity.com'>>/etc/hosts && \
     rm -f $ASF_TARBALL_FILE
     
 
