@@ -3,6 +3,7 @@ MAINTAINER awyme qinmenghua@mail.com
 
 RUN apk --no-cache add curl jq bash tree tzdata p7zip icu-libs && \
 	cp -r -f /usr/share/zoneinfo/Hongkong /etc/localtime && \
+	echo -ne "184.29.59.103  steamcommunity.com" >> /etc/hosts && \
     	ASF_RELEASE_DATA=$(curl https://api.github.com/repos/JustArchi/ArchiSteamFarm/releases/latest | jq -r '.assets[] | select(.name | contains("ASF-generic.zip"))') && \
     	ASF_TARBALL_FILE=$(echo $ASF_RELEASE_DATA | jq -r '.name') && \
     	echo $ASF_RELEASE_DATA | jq -r '.browser_download_url' | xargs curl -LO && \
@@ -12,7 +13,6 @@ RUN apk --no-cache add curl jq bash tree tzdata p7zip icu-libs && \
 	cd /usr/local/asf/ && \
 	7z x $ASF_TARBALL_FILE && \
 	chmod -R +x /usr/local/asf/ && \
-    	echo '184.29.59.103 steamcommunity.com'>>/etc/hosts && \
     rm -f $ASF_TARBALL_FILE
     
 
