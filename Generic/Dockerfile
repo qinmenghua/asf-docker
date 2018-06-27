@@ -12,8 +12,8 @@ RUN apk --no-cache add curl jq bash tree tzdata p7zip icu-libs && \
 	mv $(basename $ASF_TARBALL_FILE) /usr/local/asf/ && \
 	cd /usr/local/asf/ && \
 	7z x $ASF_TARBALL_FILE && \
-	chmod -R +x /usr/local/asf/
-    rm -f $ASF_TARBALL_FILE
+	chmod -R +x /usr/local/asf/ && \
+    	rm -f $ASF_TARBALL_FILE
     
 
 CMD ["/usr/local/asf/ArchiSteamFarm.sh"]
